@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  # before_filter :authorize, only: [:show]
+  
   def new
     @user = User.new
     render :new
