@@ -12,6 +12,22 @@ Rails.application.routes.draw do
 
  # resources :sessions, only: [:create]
 
- resources :users, only: [:new, :create, :show]
+ resources :users
 
 end
+
+#      Prefix Verb   URI Pattern               Controller#Action
+#        root GET    /                         pages#index
+#      signup GET    /signup(.:format)         users#new
+#     profile GET    /profile(.:format)        users#show
+# new_session GET    /login(.:format)          sessions#new
+#      logout GET    /logout(.:format)         sessions#destroy
+#       login POST   /login(.:format)          sessions#create
+#       users GET    /users(.:format)          users#index
+#             POST   /users(.:format)          users#create
+#    new_user GET    /users/new(.:format)      users#new
+#   edit_user GET    /users/:id/edit(.:format) users#edit
+#        user GET    /users/:id(.:format)      users#show
+#             PATCH  /users/:id(.:format)      users#update
+#             PUT    /users/:id(.:format)      users#update
+#             DELETE /users/:id(.:format)      users#destroy

@@ -5,4 +5,6 @@
 <%= @user.current_city %> <br>
 <%= @user.created_at %> <br>
 
+<%= link_to "Edit", edit_user_path(@user) %>
+
 <%= link_to "logout", logout_path %>
