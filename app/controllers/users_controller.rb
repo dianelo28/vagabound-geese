@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update
     user = User.find(session[:user_id])
     if current_user = user
-      form_params = params.require(:user).permit(:first_name, :last_name, :current_city)
+      form_params = params.require(:user).permit(:first_name, :last_name, :profile_image, :current_city)
       user.update_attributes(form_params)
       redirect_to profile_path
     else
