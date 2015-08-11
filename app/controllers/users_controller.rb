@@ -19,6 +19,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(session[:user_id])
+    @posts = Post.where(user_id: current_user)
     render :show
   end
 

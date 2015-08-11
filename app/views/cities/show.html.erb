@@ -1,12 +1,15 @@
-<%= @city.city_name %>
+<div class="col-sm-8 col-sm-offset-2">
 
-<%= @city.city_description %>
+	<h1><%= @city.city_name %></h1>
 
-# form to create method should be post and go to post create not city create...
+	<h4><%= @city.city_description %><h4>
+
+</div>
+
 
 <div class="col-sm-8 col-sm-offset-2">
 
-	<h1>Post about a city</h1>
+	<h3>Write about <%= @city.city_name %>...</h3>
 
 	<form action="/posts" method="post">
 
@@ -22,5 +25,14 @@
 	    <% end %>
 
 	</form>
+
+	<% @posts.each do |p| %>
+	
+	<h3>  <%= p.title %> </h3>
+	  <%= p.user.username %><br />
+	  <%= p.content %><br />
+
+	<% end %>
+
 	
 </div>

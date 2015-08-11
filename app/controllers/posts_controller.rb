@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.all.order("created_at DESC")
   end
 
   def new
@@ -28,12 +28,24 @@ class PostsController < ApplicationController
   end
 
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
+    post_id = params[:id]
+      post = Post.find(post_id)
+    updated_attributes = post_params
+
+    if post.update_attributes(updated_attributes)
+        redirect_to post_path
+    end
   end
 
   def destroy
+    id = params[:id]
+    post = Post.find(id)
+    post.destroy
+    redirect_to profile_path
   end
 
   private
