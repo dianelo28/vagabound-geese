@@ -1,0 +1,26 @@
+
+<h1><%= @user.username %></h1>
+
+<div class="row">
+
+	<div class="col-sm-2 col-sm-offset-1">
+		<div class="profile">
+			<h3>Name:</h3> 
+			<h4><%= @user.first_name %></h4> 
+			<h3>Current City:<h3>
+			<h4><%= @user.current_city %></h4>
+			<h3>Join date:</h3>
+			<h4><%= @user.created_at %></h4>
+
+			<h4><%= link_to "Edit", edit_user_path(@user) %></h4>
+
+		</div>
+	</div>
+
+	<div class="col-sm-8">
+
+		<h3> <%= @user.username %>'s Posts: </h3>
+	</div>
+</div>
+
+

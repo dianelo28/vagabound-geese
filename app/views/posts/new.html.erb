@@ -1,0 +1,17 @@
+<div class="col-sm-4 col-sm-offset-4">
+ <legend>Write a new post!</legend>
+ <%= form_for @post do |f| %>
+
+   <!-- or not -->
+   <%= f.label :title %>:
+   <%= f.text_field :title, class:"form-control", required: true %><br />
+
+   <%= f.label :city %>:
+   <%= f.text_field :city_id, class:"form-control", required: true %><br />
+
+   <%= f.label :content %>:
+   <%= f.text_field :content, class:"form-control", required: true %><br />
+
+   <%= f.submit "Save Post", class:"btn btn-primary" %>
+ <% end %>
+</div>

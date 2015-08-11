@@ -1,0 +1,18 @@
+
+<div class="col-sm-8 col-sm-offset-2">
+
+<h1> Sign up! </h1>
+
+<%= form_for @user do |f| %>
+  <%= f.text_field :first_name, placeholder: "First Name", autofocus: true, class:"form-control", required:true %><br>
+  <%= f.text_field :last_name, placeholder: "Last Name", class:"form-control", required:true%><br>
+  <%= f.text_field :username, placeholder: "User Name", class:"form-control", required:true%><br>
+  <%= f.text_field :current_city, placeholder: "Current City", class:"form-control", required: true %><br>
+  <%= f.email_field :email, placeholder: "Email", class:"form-control", required: true %><br>
+  <%= f.password_field :password, placeholder: "Password", class:"form-control", required: true %><br>
+  <%= f.password_field :password, placeholder: "Confirm Password", class:"form-control", required: true %><br>
+  <hr>
+  <%= f.submit "Sign Up" %>
+<% end %>
+
+</div>

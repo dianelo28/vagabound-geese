@@ -1,0 +1,45 @@
+<div class="navbar-wrapper">
+            <div class="container-fluid">
+                <nav class="navbar navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="#">VEGABOND</a>
+                            
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                        	<ul class="nav navbar-nav">
+                    			<li class="active"><a href="/" class="">Home</a></li>
+                    		    <li class=" dropdown"><a href="/posts/new" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Cities<span class="caret"></span></a>
+                    		    </li>
+                        	</ul>
+
+                        	<% if current_user %>
+                        	<ul class="nav navbar-nav pull-right" id="signedin">
+                        		<li class=""><a href="/profile">Profile</a></li>
+                        	    <li class=""><a href="/logout">Logout</a></li>
+                        	</ul>
+
+                            <% else %>    
+
+                        	<ul class="nav navbar-nav">    
+                                <li class=" dropdown"><a href="/signup" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign Up <span class="caret"></span></a>
+                                </li>
+                                <li class=" dropdown"><a href="/login" class="dropdown-toggle " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log In <span class="caret"></span></a>
+                                </li>
+
+                            </ul>
+
+                            <% end %>
+                        </div>
+
+
+                    </div>
+                </nav>
+            </div>
+        </div>
