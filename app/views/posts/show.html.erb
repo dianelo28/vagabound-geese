@@ -4,5 +4,6 @@
 	  Written by: <%= @post.user.username %><br />
 	  About: <%= @post.city.city_name %><br /><br />
 	  <%= @post.content %><br />
+	  <%= link_to "Edit Post", edit_post_path(@post) %>
 	  <%= link_to 'Destroy', post_path, data: {confirm: "Are you sure?"}, :method => :delete %>
 </div>
