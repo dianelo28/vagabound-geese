@@ -14,8 +14,9 @@
 	      <%= content_tag :div, msg, class: name %>
 	    <% end %>
 
-	    <%= form_for :posts do |f| %>
+	    <%= form_for :post do |f| %>
 	      <%= f.text_field :title, placeholder: "Title", autofocus: true, class: "form-control" %> <br />
+	      <%= f.text_field :city_id, placeholder: "City Id", class: "form-control"%> <br />
 	      <%= f.text_field :content, placeholder: "Content", class: "form-control" %><br />
 	      <%= f.submit "Post" %>
 	    <% end %>
