@@ -1,8 +1,15 @@
-<h1>Posts</h1>
-<% @posts.each do |p| %>
-  <%= p.title %>
-  <%= p.user.username %>
-  <%= p.city %>
-  <%= p.content %>
-<%= link_to "Show Posts", post_path(p) %>
-<% end %>
+
+<div class="container" id="background">
+	<div class="col-sm-8 col-sm-offset-2">
+		<h1>Need a vacation idea?  Read about other cities:</h1>
+
+		<div class="posts">
+			<% @posts.each do |p| %>
+			<h2> <%= link_to p.title, post_path(p) %> </h2>
+			  <h7> Written by: <%= link_to p.user.username, profile_path %></h7><br />
+			  <h7> About: <%= link_to p.city.city_name, city_path(p.city_id) %> </h7>
+			  <h5><%= p.content %> </h5>
+			<% end %>
+		</div>
+	</div>
+</div>
