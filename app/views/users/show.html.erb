@@ -3,6 +3,7 @@
 
 <%= @user.first_name %> <br>
 <%= @user.current_city %> <br>
+<%= image_tag @user.profile_image.url(:medium) %>
 <%= @user.created_at %> <br>
 
 <%= link_to "Edit", edit_user_path(@user) %>
