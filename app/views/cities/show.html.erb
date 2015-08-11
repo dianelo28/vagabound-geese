@@ -19,7 +19,7 @@
 
 	    <%= form_for :post do |f| %>
 	      <%= f.text_field :title, placeholder: "Title", autofocus: true, class: "form-control" %> <br />
-	      <%= f.text_field :city_id, placeholder: "City Id", class: "form-control"%> <br />
+	      <%= f.hidden_field :city_id, value: params[:id] %> <br />
 	      <%= f.text_field :content, placeholder: "Content", class: "form-control" %><br />
 	      <%= f.submit "Post" %>
 	    <% end %>
