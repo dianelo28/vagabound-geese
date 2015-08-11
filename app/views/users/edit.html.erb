@@ -2,9 +2,10 @@
 
 <h1> Edit Profile </h1>
 
-<%= form_for @user do |f| %>
+<%= form_for @user, :html => { :multipart => true } do |f| %>
   <%= f.text_field :first_name, placeholder: "First Name", autofocus: true, class:"form-control" %><br>
   <%= f.text_field :last_name, placeholder: "Last Name", class:"form-control"%><br>
+  <%= f.file_field :profile_image %><br>
   <%= f.text_field :current_city, placeholder: "Current City", class:"form-control"%><br>
   <hr>
   <%= f.submit "Make Changes" %>

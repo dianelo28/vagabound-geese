@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150811184946) do
+=======
+ActiveRecord::Schema.define(version: 20150811031258) do
+>>>>>>> 4652e1bd271466bf563643ed5ed543a9dc67ba2c
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,9 +45,13 @@ ActiveRecord::Schema.define(version: 20150811184946) do
     t.string   "email"
     t.string   "password_digest"
     t.string   "current_city"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "username"
+    t.string   "profile_image_file_name"
+    t.string   "profile_image_content_type"
+    t.integer  "profile_image_file_size"
+    t.datetime "profile_image_updated_at"
   end
 
   add_foreign_key "posts", "cities"
