@@ -21,6 +21,10 @@
 	<div class="col-sm-8">
 
 		<h3> <%= @user.username %>'s Posts: </h3>
+		<% @posts.each do |p| %>
+			<h5> <%= link_to p.title, post_path(p) %></h5>
+			<%= link_to "Edit Post", edit_post_path(p) %>
+		<% end %>
 	</div>
 </div>
 =======
