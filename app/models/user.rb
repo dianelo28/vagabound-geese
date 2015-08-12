@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
 
 
+
 	# Paperclip
 	has_attached_file :profile_image,
 	                 :styles => { :medium => "150x150>", :thumb => "44x44#" },
@@ -28,5 +29,8 @@ class User < ActiveRecord::Base
                        :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
                        :size => { :in => 0..1000.kilobytes }
 
+
+	extend FriendlyId
+  friendly_id :username, use: :slugged
 
 end
