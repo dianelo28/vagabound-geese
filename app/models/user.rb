@@ -3,6 +3,14 @@ class User < ActiveRecord::Base
 	has_secure_password
 	has_many :posts, dependent: :destroy
 
+	validates :username, uniqueness: true
+	validates :email, :password, presence: true
+  validates :email, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i}
+  validates :email, uniqueness: true
+  validates :password, length: { minimum: 6 }
+
+
+
 
 	# Paperclip
 	has_attached_file :profile_image,
@@ -21,5 +29,8 @@ class User < ActiveRecord::Base
                        :content_type => { :content_type => ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
                        :size => { :in => 0..1000.kilobytes }
 
+
+	extend FriendlyId
+  friendly_id :username, use: :slugged
 
 end

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  # before_filter :authorize, only: [:show]
+  before_filter :authorize, only: [:show]
 
   def new
     @user = User.new
@@ -18,17 +18,17 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:user_id])
+    @user = User.friendly.find(session[:user_id])
     @posts = Post.where(user_id: current_user)
     render :show
   end
 
   def edit
-    @user = User.find(session[:user_id])
+    @user = User.friendly.find(session[:user_id])
   end
 
   def update
-    user = User.find(session[:user_id])
+    user = User.friendly.find(session[:user_id])
     if current_user = user
       form_params = params.require(:user).permit(:first_name, :last_name, :profile_image, :current_city)
       user.update_attributes(form_params)

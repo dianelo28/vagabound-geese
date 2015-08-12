@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'friendly_id'
 
 # Paperclip to upload profile images
 gem "paperclip", :git => "git://github.com/thoughtbot/paperclip.git"
