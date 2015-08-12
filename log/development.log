@@ -11619,3 +11619,327 @@ Processing by PostsController#index as HTML
   [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
   Rendered layouts/_nav.html.erb (1.7ms)
 Completed 200 OK in 60ms (Views: 58.1ms | ActiveRecord: 1.5ms)
+  [1m[36mActiveRecord::SchemaMigration Load (37.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (4.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'cities'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.3ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'posts'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.7ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (14.2ms)[0m  INSERT INTO "cities" ("city_name", "city_description", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["city_name", "San Francisco"], ["city_description", "Kitsch food truck Odd Future cold-pressed. Thundercats PBR tofu, cornhole lumbersexual Kickstarter semiotics literally master cleanse meditation cray pug hella organic synth. Squid viral quinoa, slow-carb selfies sartorial fingerstache fixie umami ethical keytar. Meh High Life Carles Pitchfork Wes Anderson. Pitchfork cold-pressed Vice, beard fingerstache messenger bag cred Brooklyn four loko. 8-bit American Apparel typewriter asymmetrical, letterpress farm-to-table pour-over pop-up. Tote bag cronut four loko chambray Carles four dollar toast Shoreditch, PBR&B art party.\n\nCold-pressed chia PBR typewriter banjo. American Apparel DIY High Life, you probably havent heard of them lomo deep v cray Brooklyn roof party lumbersexual salvia bitters church-key. Taxidermy listicle migas bespoke Vice skateboard four loko, stumptown occupy. Hashtag normcore pork belly, small batch freegan direct trade drinking vinegar tofu seitan. Kitsch lomo mlkshk Vice, vegan ennui disrupt meh aesthetic hoodie artisan typewriter. Food truck chillwave DIY street art letterpress. Brooklyn actually raw denim, lumbersexual Helvetica lomo whatever ugh post-ironic vinyl art party letterpress."], ["created_at", "2015-08-12 17:24:36.057519"], ["updated_at", "2015-08-12 17:24:36.057519"]]
+  [1m[36m (25.8ms)[0m  [1mCOMMIT[0m
+
+
+Started GET "/" for ::1 at 2015-08-12 10:25:06 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (23.0ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (3.5ms)[0m  SELECT "posts".* FROM "posts"  ORDER BY created_at DESC
+  [1m[36mUser Load (21.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mCity Load (23.7ms)[0m  SELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered posts/index.html.erb within layouts/application (245.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered layouts/_nav.html.erb (51.9ms)
+Completed 200 OK in 2337ms (Views: 2179.5ms | ActiveRecord: 88.7ms)
+
+
+Started GET "/assets/cities.self-d81fc260f11bcfa8e12f8a53ce014eb460ab6cbc52e3ab79ee75376dccd909c0.css?body=1" for ::1 at 2015-08-12 10:25:09 -0700
+
+
+Started GET "/assets/application.self-7a3dd727b67319fc3f2d32e108e935bfd24b42ddf599aa81235ac0cdce70c14e.css?body=1" for ::1 at 2015-08-12 10:25:09 -0700
+
+
+Started GET "/assets/posts.self-e8599ef9dc609aadd415cf31a3feee15bef8ee126e943b3dfcaee9ac34ffee33.css?body=1" for ::1 at 2015-08-12 10:25:09 -0700
+
+
+Started GET "/assets/vagabond-logo_v02_720-d63298c9cb87fca40391ea488fec410c4bc5f5f0d999a1b6242dda689a34c3bb.png" for ::1 at 2015-08-12 10:25:09 -0700
+
+
+Started GET "/assets/world_traveler_720-cc71a0740e2944d958acd3e4b7301a6f8f05d97856e7ed55c3d3c8375c48d590.jpg" for ::1 at 2015-08-12 10:25:10 -0700
+
+
+Started GET "/" for ::1 at 2015-08-12 10:25:20 -0700
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts"  ORDER BY created_at DESC
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mCity Load (0.3ms)[0m  SELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered posts/index.html.erb within layouts/application (5.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered layouts/_nav.html.erb (5.6ms)
+Completed 200 OK in 85ms (Views: 82.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/posts/new" for ::1 at 2015-08-12 10:25:23 -0700
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (158.0ms)
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered layouts/_nav.html.erb (5.8ms)
+Completed 200 OK in 355ms (Views: 353.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/logout" for ::1 at 2015-08-12 10:25:36 -0700
+Processing by SessionsController#destroy as HTML
+Redirected to http://localhost:3000/login?notice=logout
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/login?notice=logout" for ::1 at 2015-08-12 10:25:36 -0700
+Processing by SessionsController#new as HTML
+  Parameters: {"notice"=>"logout"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered sessions/new.html.erb within layouts/application (16.3ms)
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_nav.html.erb (5.5ms)
+Completed 200 OK in 148ms (Views: 144.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/signup" for ::1 at 2015-08-12 10:25:42 -0700
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (15.0ms)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_nav.html.erb (7.2ms)
+Completed 200 OK in 155ms (Views: 152.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users" for ::1 at 2015-08-12 10:26:03 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"N045G/4ut6GoF5vwvhB2OPa7QsDYUZQ3UfjEmOK/X6WVrGt9o5X0qUrEC21d/tiq4bLPNmc54FLi/WTgsRY37A==", "user"=>{"first_name"=>"Kara", "last_name"=>"Nicholas", "username"=>"Kara9125", "profile_image"=>#<ActionDispatch::Http::UploadedFile:0x007fe474639560 @tempfile=#<Tempfile:/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/RackMultipart20150812-20278-1e14tba.jpg>, @original_filename="tumblr_nsup70eB5d1u7wnoko1_1280.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[profile_image]\"; filename=\"tumblr_nsup70eB5d1u7wnoko1_1280.jpg\"\r\nContent-Type: image/jpeg\r\n">, "current_city"=>"Concord", "email"=>"k.nicholas9125@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+Command :: file -b --mime '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-19gtgis.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-ce7pxw.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-ce7pxw.jpg[0]'
+Command :: convert '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-ce7pxw.jpg[0]' -auto-orient -resize "150x150>" '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/b63100555c068f885867cac93680e5a220150812-20278-1gsggxn'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-ce7pxw.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-ce7pxw.jpg[0]'
+Command :: convert '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-ce7pxw.jpg[0]' -auto-orient -resize "x44" -crop "44x44+8+0" +repage '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/b63100555c068f885867cac93680e5a220150812-20278-zfkr9j'
+  [1m[35m (0.3ms)[0m  BEGIN
+Command :: file -b --mime '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-zt6osa.jpg'
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "users" ("first_name", "last_name", "username", "profile_image_file_name", "profile_image_content_type", "profile_image_file_size", "profile_image_updated_at", "email", "current_city", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"[0m  [["first_name", "Kara"], ["last_name", "Nicholas"], ["username", "Kara9125"], ["profile_image_file_name", "tumblr_nsup70eB5d1u7wnoko1_1280.jpg"], ["profile_image_content_type", "image/jpeg"], ["profile_image_file_size", 189741], ["profile_image_updated_at", "2015-08-12 17:26:03.785119"], ["email", "k.nicholas9125@gmail.com"], ["current_city", "Concord"], ["password_digest", "$2a$10$dNiO/q8A2Pp7njqa5B49POuNBsVN9dkF0Xkv6NRIi4w6o9gFYs4g."], ["created_at", "2015-08-12 17:26:04.943862"], ["updated_at", "2015-08-12 17:26:04.943862"]]
+[paperclip] saving /profile_images/5/original/profile_image.jpg
+  [1m[35m (0.4ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 1588ms (ActiveRecord: 1.4ms)
+
+ArgumentError (missing required :bucket option):
+  app/controllers/users_controller.rb:12:in `create'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.4ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (32.9ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fe474c884e8 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fe474c92b28 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fe474199280 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started POST "/users" for ::1 at 2015-08-12 10:26:28 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"XkdMMDXEc8RwLMPehMAE7hKz51qtwUZPBDVwth+ywOD8pR5WaH8wzJL/U0NnLqp8BbpqrBKpMiq3MNDOTBuoqQ==", "user"=>{"first_name"=>"Kara", "last_name"=>"Nicholas", "username"=>"Kara9125", "profile_image"=>#<ActionDispatch::Http::UploadedFile:0x007fe4746da460 @tempfile=#<Tempfile:/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/RackMultipart20150812-20278-1x08vde.jpg>, @original_filename="tumblr_nsup70eB5d1u7wnoko1_1280.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[profile_image]\"; filename=\"tumblr_nsup70eB5d1u7wnoko1_1280.jpg\"\r\nContent-Type: image/jpeg\r\n">, "current_city"=>"Concord", "email"=>"karapm@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+Command :: file -b --mime '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-ra3db5.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-vrm8ph.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-vrm8ph.jpg[0]'
+Command :: convert '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-vrm8ph.jpg[0]' -auto-orient -resize "150x150>" '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/0c6773dc9fa7892af351ff5ea1fd439320150812-20278-1r5zr6t'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-vrm8ph.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-vrm8ph.jpg[0]'
+Command :: convert '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-vrm8ph.jpg[0]' -auto-orient -resize "x44" -crop "44x44+8+0" +repage '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/0c6773dc9fa7892af351ff5ea1fd439320150812-20278-krjkpl'
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-1ald1ej.jpg'
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("first_name", "last_name", "username", "profile_image_file_name", "profile_image_content_type", "profile_image_file_size", "profile_image_updated_at", "email", "current_city", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"  [["first_name", "Kara"], ["last_name", "Nicholas"], ["username", "Kara9125"], ["profile_image_file_name", "tumblr_nsup70eB5d1u7wnoko1_1280.jpg"], ["profile_image_content_type", "image/jpeg"], ["profile_image_file_size", 189741], ["profile_image_updated_at", "2015-08-12 17:26:28.463190"], ["email", "karapm@gmail.com"], ["current_city", "Concord"], ["password_digest", "$2a$10$ZW3GtTy/JlDB3qSzM01gj.nWR2d4SqdxrELi3mIy2BjJDcHih5ivS"], ["created_at", "2015-08-12 17:26:28.838798"], ["updated_at", "2015-08-12 17:26:28.838798"]]
+[paperclip] saving /profile_images/6/original/profile_image.jpg
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 392ms (ActiveRecord: 1.1ms)
+
+ArgumentError (missing required :bucket option):
+  app/controllers/users_controller.rb:12:in `create'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.6ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.6ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (137.3ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fe474c884e8 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fe474c92b28 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fe474199280 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/" for ::1 at 2015-08-12 10:28:20 -0700
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (0.7ms)[0m  SELECT "posts".* FROM "posts"  ORDER BY created_at DESC
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mCity Load (0.4ms)[0m  SELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered posts/index.html.erb within layouts/application (6.6ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_nav.html.erb (6.2ms)
+Completed 200 OK in 270ms (Views: 265.9ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/signup" for ::1 at 2015-08-12 10:28:29 -0700
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (2.7ms)
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_nav.html.erb (5.3ms)
+Completed 200 OK in 111ms (Views: 108.9ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for ::1 at 2015-08-12 10:28:57 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jpaoNtw77MFQQnlqVT21ogWsql9EiL+jMV/2qG3NGxssdPpQgYCvybKR6fe20xswEqUnqfvgy8aCWlbQPmRzUg==", "user"=>{"first_name"=>"Kara", "last_name"=>"Nicholas", "username"=>"Kara", "profile_image"=>#<ActionDispatch::Http::UploadedFile:0x007fe47ac1d1b0 @tempfile=#<Tempfile:/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/RackMultipart20150812-20278-1loyh4q.jpg>, @original_filename="tumblr_nsup70eB5d1u7wnoko1_1280.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[profile_image]\"; filename=\"tumblr_nsup70eB5d1u7wnoko1_1280.jpg\"\r\nContent-Type: image/jpeg\r\n">, "current_city"=>"Concord", "email"=>"karapm@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+Command :: file -b --mime '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-179njob.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-fnqozi.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-fnqozi.jpg[0]'
+Command :: convert '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-fnqozi.jpg[0]' -auto-orient -resize "150x150>" '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/f814688f7035772db86ea55ca4246d0c20150812-20278-1qspid8'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-fnqozi.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-fnqozi.jpg[0]'
+Command :: convert '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-fnqozi.jpg[0]' -auto-orient -resize "x44" -crop "44x44+8+0" +repage '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/f814688f7035772db86ea55ca4246d0c20150812-20278-1nempc2'
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20278-1sp4vu1.jpg'
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("first_name", "last_name", "username", "profile_image_file_name", "profile_image_content_type", "profile_image_file_size", "profile_image_updated_at", "email", "current_city", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"  [["first_name", "Kara"], ["last_name", "Nicholas"], ["username", "Kara"], ["profile_image_file_name", "tumblr_nsup70eB5d1u7wnoko1_1280.jpg"], ["profile_image_content_type", "image/jpeg"], ["profile_image_file_size", 189741], ["profile_image_updated_at", "2015-08-12 17:28:57.396305"], ["email", "karapm@gmail.com"], ["current_city", "Concord"], ["password_digest", "$2a$10$UJTEE.k4vSAYIjFhvmg0Ue/0Vsk1.0mb0KauvfcuMihpblDo7Z4.q"], ["created_at", "2015-08-12 17:28:58.072845"], ["updated_at", "2015-08-12 17:28:58.072845"]]
+[paperclip] saving /profile_images/7/original/profile_image.jpg
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 697ms (ActiveRecord: 1.1ms)
+
+ArgumentError (missing required :bucket option):
+  app/controllers/users_controller.rb:12:in `create'
+
+
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Library/Ruby/Gems/2.0.0/gems/actionpack-4.2.3/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (25.1ms)
+Cannot render console with content type multipart/form-dataAllowed content types: [#<Mime::Type:0x007fe474c884e8 @synonyms=["application/xhtml+xml"], @symbol=:html, @string="text/html">, #<Mime::Type:0x007fe474c92b28 @synonyms=[], @symbol=:text, @string="text/plain">, #<Mime::Type:0x007fe474199280 @synonyms=[], @symbol=:url_encoded_form, @string="application/x-www-form-urlencoded">]
+
+
+Started GET "/" for ::1 at 2015-08-12 10:29:49 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (22.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (2.8ms)[0m  SELECT "posts".* FROM "posts"  ORDER BY created_at DESC
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mCity Load (3.7ms)[0m  SELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered posts/index.html.erb within layouts/application (182.9ms)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1[0m
+  Rendered layouts/_nav.html.erb (22.8ms)
+Completed 200 OK in 928ms (Views: 824.4ms | ActiveRecord: 45.0ms)
+
+
+Started GET "/signup" for ::1 at 2015-08-12 10:40:48 -0700
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (66.1ms)
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT 1
+  Rendered layouts/_nav.html.erb (23.6ms)
+Completed 200 OK in 510ms (Views: 507.8ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users" for ::1 at 2015-08-12 10:41:34 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l70KZ6o064eTokqYtuXUzq2TicK8RA9Jzjd+dJS744Q1X1gB94+oj3Fx2gVVC3pcupoENAMseyx9Mt4MxxKLzQ==", "user"=>{"first_name"=>"Kara", "last_name"=>"Nicholas", "username"=>"classicman", "profile_image"=>#<ActionDispatch::Http::UploadedFile:0x007ff57ee8d430 @tempfile=#<Tempfile:/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/RackMultipart20150812-20445-1sd53kx.jpg>, @original_filename="tumblr_nsup70eB5d1u7wnoko1_1280.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"user[profile_image]\"; filename=\"tumblr_nsup70eB5d1u7wnoko1_1280.jpg\"\r\nContent-Type: image/jpeg\r\n">, "current_city"=>"San Francisco", "email"=>"karapm@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Sign Up"}
+Command :: file -b --mime '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20445-1ng0vkx.jpg'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20445-7p1eb4.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20445-7p1eb4.jpg[0]'
+Command :: convert '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20445-7p1eb4.jpg[0]' -auto-orient -resize "150x150>" '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/81a60b32e5ee7be3d231ceb337ea65b020150812-20445-ze5gyb'
+Command :: identify -format '%wx%h,%[exif:orientation]' '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20445-7p1eb4.jpg[0]' 2>/dev/null
+Command :: identify -format %m '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20445-7p1eb4.jpg[0]'
+Command :: convert '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20445-7p1eb4.jpg[0]' -auto-orient -resize "x44" -crop "44x44+8+0" +repage '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/81a60b32e5ee7be3d231ceb337ea65b020150812-20445-z9wjv6'
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+Command :: file -b --mime '/var/folders/df/8n8m698j1gb29z46466zp4t00000gn/T/121aa66dd1989d8dff398c09a76d8f4d20150812-20445-o21ho3.jpg'
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "users" ("first_name", "last_name", "username", "profile_image_file_name", "profile_image_content_type", "profile_image_file_size", "profile_image_updated_at", "email", "current_city", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING "id"  [["first_name", "Kara"], ["last_name", "Nicholas"], ["username", "classicman"], ["profile_image_file_name", "tumblr_nsup70eB5d1u7wnoko1_1280.jpg"], ["profile_image_content_type", "image/jpeg"], ["profile_image_file_size", 189741], ["profile_image_updated_at", "2015-08-12 17:41:35.730631"], ["email", "karapm@gmail.com"], ["current_city", "San Francisco"], ["password_digest", "$2a$10$N8onkvdXika5/BSxJUfVYeTLWnW0fYZQAEdTEdOx44gbFPOUm5HGa"], ["created_at", "2015-08-12 17:41:44.740654"], ["updated_at", "2015-08-12 17:41:44.740654"]]
+[paperclip] saving /profile_images/8/original/profile_image.jpg
+[AWS S3 200 0.843492 0 retries] put_object(:acl=>:public_read,:bucket_name=>"vagabond-photo-ga",:content_length=>189741,:content_type=>"image/jpeg",:data=>Paperclip::UploadedFileAdapter: tumblr_nsup70eB5d1u7wnoko1_1280.jpg,:key=>"profile_images/8/original/profile_image.jpg")  
+
+[paperclip] saving /profile_images/8/medium/profile_image.jpg
+[AWS S3 200 0.044322 0 retries] put_object(:acl=>:public_read,:bucket_name=>"vagabond-photo-ga",:content_length=>5407,:content_type=>"image/jpeg",:data=>Paperclip::FileAdapter: 81a60b32e5ee7be3d231ceb337ea65b020150812-20445-ze5gyb,:key=>"profile_images/8/medium/profile_image.jpg")  
+
+[paperclip] saving /profile_images/8/thumb/profile_image.jpg
+[AWS S3 200 0.056736 0 retries] put_object(:acl=>:public_read,:bucket_name=>"vagabond-photo-ga",:content_length=>1406,:content_type=>"image/jpeg",:data=>Paperclip::FileAdapter: 81a60b32e5ee7be3d231ceb337ea65b020150812-20445-z9wjv6,:key=>"profile_images/8/thumb/profile_image.jpg")  
+
+  [1m[36m (32.8ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/profile
+Completed 302 Found in 16039ms (ActiveRecord: 34.0ms)
+
+
+Started GET "/profile" for ::1 at 2015-08-12 10:41:51 -0700
+Processing by UsersController#show as HTML
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mPost Load (0.9ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 8
+  Rendered users/show.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_nav.html.erb (21.1ms)
+Completed 200 OK in 390ms (Views: 385.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/profile" for ::1 at 2015-08-12 10:42:59 -0700
+Processing by UsersController#show as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mPost Load (0.7ms)[0m  [1mSELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 8[0m
+  Rendered users/show.html.erb within layouts/application (3.9ms)
+  Rendered layouts/_nav.html.erb (4.0ms)
+Completed 200 OK in 451ms (Views: 446.5ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/profile" for ::1 at 2015-08-12 10:43:02 -0700
+Processing by UsersController#show as HTML
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mPost Load (0.5ms)[0m  SELECT "posts".* FROM "posts" WHERE "posts"."user_id" = 8
+  Rendered users/show.html.erb within layouts/application (2.1ms)
+  Rendered layouts/_nav.html.erb (3.1ms)
+Completed 200 OK in 87ms (Views: 83.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/posts/new" for ::1 at 2015-08-12 10:43:04 -0700
+Processing by PostsController#new as HTML
+  Rendered posts/new.html.erb within layouts/application (204.9ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  Rendered layouts/_nav.html.erb (5.4ms)
+Completed 200 OK in 401ms (Views: 399.4ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/posts" for ::1 at 2015-08-12 10:43:24 -0700
+Processing by PostsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"63HsDSjQUmNiqUZ5Hyg4Chk1ky9c2zC+mgPXjcqzszhJk75rdWsRa4B61uT8xpaYDjwe2eOzRNspBnf1mRrbcQ==", "post"=>{"title"=>"Hi", "city_id"=>"1", "content"=>"Im so clean "}, "commit"=>"Save Post"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 8]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "posts" ("title", "city_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Hi"], ["city_id", 1], ["content", "Im so clean "], ["user_id", 8], ["created_at", "2015-08-12 17:43:25.001206"], ["updated_at", "2015-08-12 17:43:25.001206"]]
+  [1m[36m (45.6ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 175ms (ActiveRecord: 47.6ms)
+
+
+Started GET "/" for ::1 at 2015-08-12 10:43:25 -0700
+Processing by PostsController#index as HTML
+  [1m[35mPost Load (10.8ms)[0m  SELECT "posts".* FROM "posts"  ORDER BY created_at DESC
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  [1m[35mCity Load (0.3ms)[0m  SELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT 1  [["id", 1]]
+  Rendered posts/index.html.erb within layouts/application (17.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 8]]
+  Rendered layouts/_nav.html.erb (4.0ms)
+Completed 200 OK in 153ms (Views: 140.0ms | ActiveRecord: 11.8ms)
