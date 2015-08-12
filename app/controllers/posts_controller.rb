@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+
+  before_filter :authorize, except: [:index, :show]
+
   def index
     @posts = Post.all.order("created_at DESC")
   end
@@ -13,6 +16,7 @@ class PostsController < ApplicationController
       post = current_user.posts.new(post_params)
         if post.save
           redirect_to "/"
+          flash[:success] = "AYYYY Success!" 
         else
           redirect_to :back
           flash[:error] = "Sorry, Not Sorry!"
