@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+
   def create
 
     if current_user
