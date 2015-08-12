@@ -20,8 +20,9 @@
  */
 
 body{
-    background: #8999A8;
-    padding-top: 100px;
+    background: black;
+    padding-top: 55px;
+    color: white;
 }
 .navbar, .dropdown-menu{
 background:rgba(255,255,255,0.25);
@@ -67,4 +68,8 @@ border: none;
 }
 .nav li:hover:nth-child(8n+8), .nav li.active:nth-child(8n+8){
   border-bottom: #62C2E4 3px solid;
+}
+
+.navbar-brand img{
+  height: 40px;
 }

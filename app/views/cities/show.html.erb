@@ -19,9 +19,9 @@
 
 	    <%= form_for :post do |f| %>
 	      <%= f.text_field :title, placeholder: "Title", autofocus: true, class: "form-control" %> <br />
-	      <%= f.hidden_field :city_id, value: params[:id] %> <br />
-	      <%= f.text_field :content, placeholder: "Content", class: "form-control" %><br />
-	      <%= f.submit "Post" %>
+	      <%= f.text_area :content, placeholder: "Content", class: "form-control", size: "24x6" %><br />
+	      <%= f.hidden_field :city_id, value: params[:id] %>
+	      <%= f.submit "Post", class: "btn btn-info" %>
 	    <% end %>
 
 	</form>
