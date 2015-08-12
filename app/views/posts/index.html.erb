@@ -19,18 +19,58 @@
 
 	<div id="map"></div>
 
-	  <script type="text/javascript">
-	    $(document).ready(function(){
+	<script type="text/javascript">
+	      $(document).ready(function(){
 
-	      new GMaps({
-	        div: '#map',
-	        lat: -12.043333,
-	        lng: -77.028333,
-	        height: '500px'
+	        var map = new GMaps({
+	          div: '#map',
+	          lat: 44.344622,
+	          lng: -52.522918,
+	          height: '500px',
+	          zoom: 3
+	        });
+
+	        // San Francisco
+	        map.addMarker({
+	          lat: 37.7833,
+	          lng: -122.4167,
+	          title: 'San Francisco',
+	          // click: function(e) {
+	          //   alert('You clicked in this marker');
+	          // },
+	          infoWindow: {
+	            content: '<p><a href="/cities/san-francisco">San Francisco</a></p>'
+	          }
+	        });
+
+	        // London
+	        map.addMarker({
+	          lat: 51.5072,
+	          lng: -0.1275,
+	          title: 'London',
+	          // click: function(e) {
+	          //   alert('You clicked in this marker');
+	          // },
+	          infoWindow: {
+	            content: '<p><a href="/cities/london">London</a></p>'
+	          }
+	        });
+
+	        // Gibraltar
+	        map.addMarker({
+	          lat: 36.1430,
+	          lng: -5.3530,
+	          title: 'Gibraltar',
+	          // click: function(e) {
+	          //   alert('You clicked in this marker');
+	          // },
+	          infoWindow: {
+	            content: '<p><a href="/cities/gibraltar">Gibraltar</a></p>'
+	          }
+	        });
+
 	      });
-
-	    });
-	  </script>
+	    </script>
 	  
 </div>
 
