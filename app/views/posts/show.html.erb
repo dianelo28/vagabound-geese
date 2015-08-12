@@ -9,7 +9,9 @@
 		  <%= @post.content %><br />
 		</div>
 		<br />
+			<% if current_user %>
 		  <%= link_to "Edit Post", edit_post_path(@post), class: "btn btn-info"%>
 		  <%= link_to 'Destroy', post_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-danger" %>
+			<% end %>	
 
 </div>
