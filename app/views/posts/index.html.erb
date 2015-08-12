@@ -1,16 +1,36 @@
 
 <div class="container" id="background">
 	<div class="col-sm-6">
-		<h1>Need a vacation idea?  Read about other cities:</h1>
 
 		<div class="posts">
 			<% @posts.each do |p| %>
+
+			<% flash.each do |name, msg| %>
+			  <%= content_tag :div, msg, class: name %>
+			<% end %>
+
 			<h2> <%= link_to p.title, post_path(p) %> </h2>
-			byebug
 			  <h7> Written by: <%= link_to p.user.username, profile_path %></h7><br />
 			  <h7> About: <%= link_to p.city.city_name, city_path(p.city_id) %> </h7>
 			  <h5><%= p.content %> </h5>
 			<% end %>
 		</div>
 	</div>
+
+	<div id="map"></div>
+
+	  <script type="text/javascript">
+	    $(document).ready(function(){
+
+	      new GMaps({
+	        div: '#map',
+	        lat: -12.043333,
+	        lng: -77.028333,
+	        height: '500px'
+	      });
+
+	    });
+	  </script>
+	  
 </div>
+

@@ -5,20 +5,17 @@ class User < ActiveRecord::Base
 
 	validates :username, uniqueness: true
 	validates :email, :password, presence: true
-  validates :email, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i}
-  validates :email, uniqueness: true
-  validates :password, length: { minimum: 6 }
-
-
-
+  	validates :email, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i}
+  	validates :email, uniqueness: true
+  	validates :password, length: { minimum: 6 }
 
 	# Paperclip
+
 	has_attached_file :profile_image,
 	                 :styles => { :medium => "150x150>", :thumb => "44x44#" },
 	                 :storage => :s3,
 	                 :s3_credentials => Proc.new { |a| a.instance.s3_credentials },
-	                 :path =>
-									 "/profile_images/:id/:style/profile_image.:extension",
+	                 :path => "/profile_images/:id/:style/profile_image.:extension",
 	                 :default_url => "https://s3.amazonaws.com/vagabond-photo-ga/defaults/default_profile_image.png"
 
 	def s3_credentials
@@ -32,5 +29,6 @@ class User < ActiveRecord::Base
 
 	extend FriendlyId
   friendly_id :username, use: :slugged
+
 
 end

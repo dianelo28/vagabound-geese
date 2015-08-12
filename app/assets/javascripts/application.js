@@ -10,12 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
-//= require jquery_ujs
+
 //= require turbolinks
 //= require_tree .
 
+
+
+
 $(document).ready(function(){
+
 
 /**
  * This object controls the nav bar. Implement the add and remove
@@ -93,3 +96,4 @@ window.onscroll = function(e) {
  */
 offSetManager();
 });
+
