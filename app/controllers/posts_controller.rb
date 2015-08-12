@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       post = current_user.posts.new(post_params)
         if post.save
           redirect_to "/"
-          flash[:success] = "AYYYY Success!" 
+          flash[:success] = "AYYYY Success!"
         else
           redirect_to :back
           flash[:error] = "Sorry, Not Sorry!"
@@ -28,16 +28,16 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = Post.friendly.find(params[:id])
   end
 
   def update
     post_id = params[:id]
-      post = Post.find(post_id)
+      post = Post.friendly.find(post_id)
     updated_attributes = post_params
 
     if post.update_attributes(updated_attributes)
