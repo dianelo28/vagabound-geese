@@ -6,6 +6,7 @@
 
 	<div class="col-sm-2 col-sm-offset-1">
 		<div class="profile">
+			<%= image_tag @user.profile_image.url(:medium) %>
 			<h3>Name:</h3> 
 			<h4><%= @user.first_name %></h4> 
 			<h3>Current City:<h3>

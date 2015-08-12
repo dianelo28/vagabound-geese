@@ -1,8 +1,8 @@
 <div class="col-sm-4 col-sm-offset-4">
  <legend>Write a new post!</legend>
- <%= form_for @post do |f| %>
-   <% flash.each do |name, msg| %>
-    <%= content_tag :div, msg, class: name %>
+   <%= form_for @post do |f| %>
+    <% flash.each do |name, msg| %>
+   <%= content_tag :div, msg, class: name %>
    <% end %>
 
    <!-- or not -->
