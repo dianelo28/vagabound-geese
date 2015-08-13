@@ -1,17 +1,22 @@
 
 <div class="col-sm-8 col-sm-offset-2">
 	<h1>  <%= @post.title %> </h1>
-		<div class="author">
-		  Written by: <%= @post.user.username %><br />
-		  About: <%= @post.city.city_name %><br /><br />
-		</div>
-		<div class="post">
-		  <%= @post.content %><br />
-		</div>
-		<br />
-			<% if current_user %>
-		  <%= link_to "Edit Post", edit_post_path(@post), class: "btn btn-info"%>
-		  <%= link_to 'Destroy', post_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-danger" %>
-			<% end %>	
+	<div class="author">
+
+	  Written by: <%= @post.user.username %><br />
+	  About: <%= @post.city.city_name %><br /><br />
+
+	</div>
+
+	<div class="post">
+	  <%= @post.content %><br />
+	</div>
+
+	<br />
+
+	<% if current_user %>
+		<%= link_to "Edit Post", edit_post_path(@post), class: "btn btn-info"%>
+		<%= link_to 'Destroy', post_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-danger" %>
+	<% end %>	
 
 </div>

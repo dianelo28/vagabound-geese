@@ -19,7 +19,7 @@ class PostsController < ApplicationController
           redirect_to "/"
         else
           redirect_to :back
-          # flash[:error] = "Sorry, Not Sorry!"
+          flash[:error] = "Sorry, something went wrong, your post did't save!!"
         end
     else
       redirect_to "/login"
@@ -53,6 +53,7 @@ class PostsController < ApplicationController
   end
 
   private
+
   def post_params
 
     params.require(:post).permit(:title, :city_id, :content)
