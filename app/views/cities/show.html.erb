@@ -1,4 +1,9 @@
+<div class="jumbotron">
+	<img src= <%= @city.image %> >
+</div>
+
 <div class="col-sm-8 col-sm-offset-2">
+
 
 	<h1><%= @city.city_name %></h1>
 
@@ -8,6 +13,8 @@
 
 
 <div class="col-sm-8 col-sm-offset-2">
+
+
 
 	<h3>Write something about <%= @city.city_name %>...</h3>
 
@@ -27,8 +34,7 @@
 	</form>
 
 	<div class="citypost">
-		<% @posts.each do |p| %>
-		
+		<% @posts.each do |p| %>		
 		<div class="title">
 			<h3>  <%= p.title %> </h3>
 			<h5>  Author: <%= p.user.username %> </h5>
