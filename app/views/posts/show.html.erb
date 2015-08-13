@@ -17,6 +17,22 @@
 	<% if current_user %>
 		<%= link_to "Edit Post", edit_post_path(@post), class: "btn btn-info"%>
 		<%= link_to 'Destroy', post_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-danger" %>
-	<% end %>	
+	<% end %>
+
+
+
+	<form action="/comments" method="post">
+
+	    <% flash.each do |name, msg| %>
+	      <%= content_tag :div, msg, class: name %>
+	    <% end %>
+
+	    <%= form_for :comment do |f|  %>
+	      <%= f.text_field :description, placeholder: "Comment", autofocus: true, class: "form-control" %> <br />
+	      <%= f.hidden_field :post_id, value: params[:id] %>
+		  <%= f.submit "Comment", class: "btn btn-info" %>
+	    <% end %>
+
+	</form>	
 
 </div>
