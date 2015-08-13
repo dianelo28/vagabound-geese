@@ -2,8 +2,21 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
+#jumbotron img{
+	width: 100vw
+}
 
 textarea {
     resize: none;
+}
+
+.title{
+	text-align: right;
+	background: #006B8F;
+	color: white;
+	padding-right: 10px;
+}
+
+.citypost{
+	margin-bottom: 100px;
 }

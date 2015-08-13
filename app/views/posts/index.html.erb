@@ -1,23 +1,13 @@
 
 <div class="container" id="background">
-	<div class="col-sm-6">
-
-		<div class="posts">
-			<% @posts.each do |p| %>
-
-			<% flash.each do |name, msg| %>
-			  <%= content_tag :div, msg, class: name %>
-			<% end %>
-
-			<h2> <%= link_to p.title, post_path(p) %> </h2>
-			  <h7> Written by: <%= link_to p.user.username, profile_path %></h7><br />
-			  <h7> About: <%= link_to p.city.city_name, city_path(p.city_id) %> </h7>
-			  <h5><%= p.content %> </h5>
-			<% end %>
+	<div class="row">
+		<div class="col-sm-4 list-group" id="cities">
+		  <a href="/cities/san-francisco" class="list-group-item">San Francisco</a>
+		  <a href="/cities/london" class="list-group-item">London</a>
+		  <a href="/cities/gibraltar" class="list-group-item">Gibraltar</a>
 		</div>
-	</div>
 
-	<div id="map"></div>
+	<div class="col-sm-8" id="map"></div>
 
 	<script type="text/javascript">
 	      $(document).ready(function(){
@@ -71,6 +61,21 @@
 
 	      });
 	    </script>
-	  
+	</div>
+</div>
+
+
+
+<div id="wrapper">
+	<div id="columns">
+		<% @posts.each do |p| %>
+			<div class="pin">
+					<h2> <%= link_to p.title, post_path(p) %> </h2>
+					<h7> Written by: <%= link_to p.user.username, profile_path %></h7><br />
+					<h7> About: <%= link_to p.city.city_name, city_path(p.city_id) %> </h7>
+					<h5><%= p.content %> </h5>
+			</div>
+		<% end %>
+	</div>
 </div>
 

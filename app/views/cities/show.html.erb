@@ -1,4 +1,9 @@
+<div class="jumbotron">
+	<img src= <%= @city.image %> >
+</div>
+
 <div class="col-sm-8 col-sm-offset-2">
+
 
 	<h1><%= @city.city_name %></h1>
 
@@ -9,7 +14,9 @@
 
 <div class="col-sm-8 col-sm-offset-2">
 
-	<h3>Write about <%= @city.city_name %>...</h3>
+
+
+	<h3>Write something about <%= @city.city_name %>...</h3>
 
 	<form action="/posts" method="post">
 
@@ -17,22 +24,25 @@
 	      <%= content_tag :div, msg, class: name %>
 	    <% end %>
 
-	    <%= form_for :post do |f| %>
+	    <%= form_for :post, :html => { :multipart => true } do |f|  %>
 	      <%= f.text_field :title, placeholder: "Title", autofocus: true, class: "form-control" %> <br />
-	      <%= f.text_area :content, placeholder: "Content", class: "form-control", size: "24x6" %><br />
+	      <%= f.text_area :content, placeholder: "Content", class: "form-control", size: "24x6" %> <br />
 	      <%= f.hidden_field :city_id, value: params[:id] %>
-	      <%= f.submit "Post", class: "btn btn-info" %>
+		  <%= f.submit "Post", class: "btn btn-info" %>
 	    <% end %>
 
 	</form>
 
-	<% @posts.each do |p| %>
-	
-	<h3>  <%= p.title %> </h3>
-	  <%= p.user.username %><br />
-	  <%= p.content %><br />
+	<div class="citypost">
+		<% @posts.each do |p| %>		
+		<div class="title">
+			<h3>  <%= p.title %> </h3>
+			<h5>  Author: <%= p.user.username %> </h5>
+		</div>
+		 	 <%= p.content %><br />
 
-	<% end %>
+		<% end %>
+	</div>
 
 	
 </div>
