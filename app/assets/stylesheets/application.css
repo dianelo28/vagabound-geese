@@ -21,9 +21,9 @@
 
 
 body{
-    background: black;
+    background: white;
     padding-top: 55px;
-    color: white;
+    color: black;
 }
 .navbar, .dropdown-menu{
 background:rgba(255,255,255,0.25);
@@ -39,7 +39,7 @@ border: none;
   background: none;
 }
 .navbar a, .dropdown-menu>li>a, .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover{
- color: #fff;
+ color: black;
 }
 .dropdown-menu{
       -webkit-box-shadow: none;
