@@ -1,15 +1,29 @@
 class Post < ActiveRecord::Base
+	# attr_accessible :all_tags
+	belongs_to :user
+	belongs_to :city
+	has_many :comments
+	has_many :taggings
+	has_many :tags, through: :taggings
 
-  belongs_to :user
-  belongs_to :city
-  has_many :comments
+	validates :title, length: { minimum: 1, maximum: 200}
+	validates :title, presence: true
+	validates :content, presence: true
 
-  validates :title, length: { minimum: 1, maximum: 200}
-  validates :title, presence: true
-  validates :content, presence: true
+	extend FriendlyId
+	friendly_id :title, use: :slugged
 
-  extend FriendlyId
-  friendly_id :title, use: :slugged
+	def all_tags=(names)
+		self.tags = names.split(",").map do |name| 
+			Tag.where(name: name.strip).first_or_create!
+
+		end
+	end
+
+	def all_tags
+		self.tags.map(&:name).join(", ")
+	end
+
 
 # has_attached_file :profile_image,
 #                  :styles => { :medium => "150x150>", :thumb => "44x44#" },
