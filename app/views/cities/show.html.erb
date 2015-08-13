@@ -1,15 +1,11 @@
 <div class="city">
-		<img src=<%= @city.image %>>
+	<h1><%= @city.city_name %></h1>
+	<img src=<%= @city.image %>>
 </div>
 
 
 <div class="col-sm-8 col-sm-offset-2">
-
-
-	<h1><%= @city.city_name %></h1>
-
 	<h4><%= @city.city_description %><h4>
-
 </div>
 
 
@@ -28,7 +24,7 @@
 	    <%= form_for :post, :html => { :multipart => true } do |f|  %>
 	      <%= f.text_field :title, placeholder: "Title", autofocus: true, class: "form-control" %> <br />
 	      <%= f.text_area :content, placeholder: "Content", class: "form-control", size: "24x6" %> <br />
-	      <%= f.hidden_field :city_id, value: params[:id] %>
+	      <%= f.hidden_field :city_id, value: @city.id %>
 		  <%= f.submit "Post", class: "btn btn-info" %>
 	    <% end %>
 
@@ -41,7 +37,6 @@
 			<h5>  Author: <%= p.user.username %> </h5>
 		</div>
 		 	 <%= p.content %><br />
-
 		<% end %>
 	</div>
 
