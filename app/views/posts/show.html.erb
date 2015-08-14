@@ -33,6 +33,10 @@
 		  <%= f.submit "Comment", class: "btn btn-info" %>
 	    <% end %>
 
+	    <% @post.comments.each do |c| %>
+	      <%= c.description %>
+	    <% end %>
+
 	</form>	
 
 </div>
