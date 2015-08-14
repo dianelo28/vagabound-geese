@@ -9,34 +9,40 @@
 	</div>
 
 	<div class="post">
-	  <%= @post.content %><br />
+	  <%= @post.content %><br /><br />
+
+	  <div class="tags"> Tags: <%=raw tag_links(@post.all_tags) %></div>
 	</div>
 
 	<br />
 
 	<% if current_user %>
-		<%= link_to "Edit Post", edit_post_path(@post), class: "btn btn-info"%>
-		<%= link_to 'Destroy', post_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-danger" %>
+		<%= link_to "Edit Post", edit_post_path(@post), class: "btn btn-info btn-xs"%>
+		<%= link_to "Destroy", post_path, data: {confirm: "Are you sure?"}, :method => :delete, class: "btn btn-danger btn-xs" %>
 	<% end %>
 
 
+	<div class="comments">
+		<br />
+		<form action="/comments" method="post">
 
-	<form action="/comments" method="post">
+		    <% flash.each do |name, msg| %>
+		      <%= content_tag :div, msg, class: name %>
+		    <% end %>
 
-	    <% flash.each do |name, msg| %>
-	      <%= content_tag :div, msg, class: name %>
-	    <% end %>
+		    <%= form_for :comment do |f|  %>
+		      <%= f.text_field :description, placeholder: "Comment", autofocus: true, class: "form-control" %> <br />
+		      <%= f.hidden_field :post_id, value: params[:id] %>
+			  <%= f.submit "Comment", class: "btn btn-info btn-xs" %>
+		    <% end %>
 
-	    <%= form_for :comment do |f|  %>
-	      <%= f.text_field :description, placeholder: "Comment", autofocus: true, class: "form-control" %> <br />
-	      <%= f.hidden_field :post_id, value: params[:id] %>
-		  <%= f.submit "Comment", class: "btn btn-info" %>
-	    <% end %>
+		    <h3>Comments: <%= @post.comments.count %> </h3>
+		    <hr>
+		    <br />
+		    <% @post.comments.each do |c| %>
+		      <%= c.description %><br /><br />
+		    <% end %> 
 
-	    <% @post.comments.each do |c| %>
-	      <%= c.description %>
-	    <% end %>
-
-	</form>	
-
+		</form>	
+	</div>
 </div>

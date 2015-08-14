@@ -1,19 +1,25 @@
 <div class="col-sm-4 col-sm-offset-4">
- <legend>Edit your post!</legend>
- <%= form_for @post do |f| %>
+   <div class="edit">   
+    <legend>Edit your post!</legend>
+    <%= form_for @post do |f| %>
 
-	<% flash.each do |name, msg| %>
-	  <%= content_tag :div, msg, class: name %>
-	<% end %>
-   <!-- or not -->
-   <%= f.label :title %>:
-   <%= f.text_field :title, class:"form-control", required: true %><br />
+   	<% flash.each do |name, msg| %>
+   	  <%= content_tag :div, msg, class: name %>
+   	<% end %>
+      <!-- or not -->
+      <%= f.label :title %>:
+      <%= f.text_field :title, class:"form-control", required: true %><br />
 
-	<%= f.hidden_field :city_id %>
+   	<%= f.hidden_field :city_id %>
 
-   <%= f.label :content %>:
-   <%= f.text_area :content, class:"form-control", required: true, size: "24x6" %><br />
+      <%= f.label :content %>:
+      <%= f.text_area :content, class:"form-control", required: true, size: "24x6" %><br />
 
-   <%= f.submit "Save Post", class:"btn btn-primary" %>
- <% end %>
+      <%= f.label :tags %>:
+      <%= f.text_field :all_tags, placeholder: "Tags separated with comma", class: "form-control" %><br />
+
+      <%= f.submit "Save Post", class:"btn btn-primary btn-xs" %>
+
+    <% end %>
+   </div>
 </div>

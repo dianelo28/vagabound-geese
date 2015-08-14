@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'tags/destroy'
+
  # Static homepage route via pages controller
  root to: 'posts#index'
 
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
  get "/logout", to: "sessions#destroy", as: :logout
  post "/login", to: "sessions#create", as: :login
  
+ get "tags/:tag", to: "posts#index", as: :tag
 
  # resources :sessions, only: [:create]
 

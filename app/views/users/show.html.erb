@@ -9,7 +9,7 @@
 			<%= image_tag @user.profile_image.url(:medium) %>
 			<h3>Name:</h3> 
 			<h4><%= @user.first_name %></h4> 
-			<h3>Current City:<h3>
+			<h3>Current City:</h3>
 			<h4><%= @user.current_city %></h4>
 			<h3>Join date:</h3>
 			<h4><%= @user.created_at %></h4>
@@ -21,7 +21,7 @@
 
 	<div class="col-sm-8">
 
-		<h3> <%= @user.username %>'s Posts: </h3>
+		<h2> <%= @user.username %>'s Posts: </h2>
 		<% @posts.each do |p| %>
 			<h5> <%= link_to p.title, post_path(p) %></h5>
 		<% end %>

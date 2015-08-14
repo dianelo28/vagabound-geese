@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
   def create
   	if current_user
-  		post = Post.find(params[:comment][:post_id])
+  		post = Post.friendly.find(params[:comment][:post_id])
   		comment = post.comments.new(comment_params)
   		if comment.save
   			redirect_to :back
@@ -24,7 +24,13 @@ class CommentsController < ApplicationController
 
   def show
   end
-
+  
+  def count
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.count(params[:comment])
+  end
+  
+    
   private
   def comment_params
   	params.require(:comment).permit(:description, :post_id)

@@ -3,7 +3,12 @@ class PostsController < ApplicationController
   before_filter :authorize, except: [:index, :show]
 
   def index
-    @posts = Post.all.order("created_at DESC")
+    # @posts = Post.all.order("created_at DESC")
+    if params[:tag]
+      @posts = Post.tagged_with(params[:tag])
+    else
+      @posts = Post.all.order("created_at DESC")
+    end
   end
 
   def new
@@ -47,7 +52,7 @@ class PostsController < ApplicationController
 
   def destroy
     id = params[:id]
-    post = Post.find(id)
+    post = Post.friendly.find(id)
     post.destroy
     redirect_to profile_path
   end

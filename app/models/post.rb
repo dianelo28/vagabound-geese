@@ -2,8 +2,8 @@ class Post < ActiveRecord::Base
 	# attr_accessible :all_tags
 	belongs_to :user
 	belongs_to :city
-	has_many :comments
-	has_many :taggings
+	has_many :comments, dependent: :destroy
+	has_many :taggings, dependent: :destroy
 	has_many :tags, through: :taggings
 
 	validates :title, length: { minimum: 1, maximum: 200}
@@ -24,6 +24,9 @@ class Post < ActiveRecord::Base
 		self.tags.map(&:name).join(", ")
 	end
 
+	def self.tagged_with(name)
+	  Tag.find_by_name!(name).posts
+	end
 
 # has_attached_file :profile_image,
 #                  :styles => { :medium => "150x150>", :thumb => "44x44#" },
